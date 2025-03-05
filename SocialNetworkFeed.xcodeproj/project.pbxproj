@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83DD2C972D784E8800A560A5 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DD2C962D784E8800A560A5 /* FeedViewModel.swift */; };
+		83DD2C9A2D78521300A560A5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 83DD2C992D78521300A560A5 /* Alamofire */; };
+		83DD2C9D2D78539900A560A5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DD2C9C2D78539200A560A5 /* NetworkManager.swift */; };
+		83DD2CA02D78584E00A560A5 /* PostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DD2C9F2D78584600A560A5 /* PostDTO.swift */; };
+		83DD2CA22D78596600A560A5 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DD2CA12D78596100A560A5 /* StorageManager.swift */; };
+		83DD2CA52D785FEA00A560A5 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DD2CA42D785FEA00A560A5 /* FeedCell.swift */; };
+		83DD2CA72D785FF600A560A5 /* FeedCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DD2CA62D785FF000A560A5 /* FeedCellViewModel.swift */; };
 		83FF3FC12D784B2A0025F536 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83FF3FB62D784B2A0025F536 /* Assets.xcassets */; };
 		83FF3FC32D784B2A0025F536 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83FF3FB92D784B2A0025F536 /* LaunchScreen.storyboard */; };
 		83FF3FC52D784B2A0025F536 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FF3FB52D784B2A0025F536 /* AppDelegate.swift */; };
@@ -16,6 +23,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		83DD2C962D784E8800A560A5 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		83DD2C9C2D78539200A560A5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		83DD2C9F2D78584600A560A5 /* PostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDTO.swift; sourceTree = "<group>"; };
+		83DD2CA12D78596100A560A5 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		83DD2CA42D785FEA00A560A5 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		83DD2CA62D785FF000A560A5 /* FeedCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCellViewModel.swift; sourceTree = "<group>"; };
 		83FF3F9A2D784A7D0025F536 /* SocialNetworkFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialNetworkFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83FF3FB52D784B2A0025F536 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83FF3FB62D784B2A0025F536 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -31,12 +44,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83DD2C9A2D78521300A560A5 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		83DD2C9B2D78535C00A560A5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				83DD2C9C2D78539200A560A5 /* NetworkManager.swift */,
+				83DD2CA12D78596100A560A5 /* StorageManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		83DD2C9E2D7856BC00A560A5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				83DD2C9F2D78584600A560A5 /* PostDTO.swift */,
+				83FF3FBD2D784B2A0025F536 /* SocialNetworkFeed.xcdatamodeld */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		83FF3F912D784A7D0025F536 = {
 			isa = PBXGroup;
 			children = (
@@ -56,10 +88,11 @@
 		83FF3FBF2D784B2A0025F536 /* SocialNetworkFeed */ = {
 			isa = PBXGroup;
 			children = (
+				83DD2C9E2D7856BC00A560A5 /* Models */,
 				83FF3FCA2D784BB70025F536 /* Feed */,
+				83DD2C9B2D78535C00A560A5 /* Services */,
 				83FF3FC92D784B2E0025F536 /* App */,
 				83FF3FB62D784B2A0025F536 /* Assets.xcassets */,
-				83FF3FBD2D784B2A0025F536 /* SocialNetworkFeed.xcdatamodeld */,
 			);
 			path = SocialNetworkFeed;
 			sourceTree = "<group>";
@@ -79,6 +112,9 @@
 			isa = PBXGroup;
 			children = (
 				83FF3FCB2D784C720025F536 /* FeedViewController.swift */,
+				83DD2C962D784E8800A560A5 /* FeedViewModel.swift */,
+				83DD2CA42D785FEA00A560A5 /* FeedCell.swift */,
+				83DD2CA62D785FF000A560A5 /* FeedCellViewModel.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -100,6 +136,7 @@
 			);
 			name = SocialNetworkFeed;
 			packageProductDependencies = (
+				83DD2C992D78521300A560A5 /* Alamofire */,
 			);
 			productName = SocialNetworkFeed;
 			productReference = 83FF3F9A2D784A7D0025F536 /* SocialNetworkFeed.app */;
@@ -129,6 +166,9 @@
 			);
 			mainGroup = 83FF3F912D784A7D0025F536;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				83DD2C982D78521300A560A5 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 83FF3F9B2D784A7D0025F536 /* Products */;
 			projectDirPath = "";
@@ -156,10 +196,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83DD2CA72D785FF600A560A5 /* FeedCellViewModel.swift in Sources */,
+				83DD2C9D2D78539900A560A5 /* NetworkManager.swift in Sources */,
+				83DD2C972D784E8800A560A5 /* FeedViewModel.swift in Sources */,
+				83DD2CA02D78584E00A560A5 /* PostDTO.swift in Sources */,
 				83FF3FC52D784B2A0025F536 /* AppDelegate.swift in Sources */,
 				83FF3FC62D784B2A0025F536 /* SceneDelegate.swift in Sources */,
 				83FF3FCC2D784C720025F536 /* FeedViewController.swift in Sources */,
 				83FF3FC72D784B2A0025F536 /* SocialNetworkFeed.xcdatamodeld in Sources */,
+				83DD2CA52D785FEA00A560A5 /* FeedCell.swift in Sources */,
+				83DD2CA22D78596600A560A5 /* StorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +428,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		83DD2C982D78521300A560A5 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		83DD2C992D78521300A560A5 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 83DD2C982D78521300A560A5 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		83FF3FBD2D784B2A0025F536 /* SocialNetworkFeed.xcdatamodeld */ = {
