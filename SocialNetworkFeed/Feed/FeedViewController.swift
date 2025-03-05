@@ -17,13 +17,7 @@ final class FeedViewController: UIViewController {
         return tableView
     }()
     
-    var viewModel: FeedViewModelProtocol! {
-        didSet {
-            viewModel.getPosts { [unowned self] in
-                feedTableView.reloadData()
-            }
-        }
-    }
+    var viewModel: FeedViewModelProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,12 +27,16 @@ final class FeedViewController: UIViewController {
         feedTableView.delegate = self
         
         setupUI()
+        loadData()
     }
     
     private func setupUI() {
         view.backgroundColor = .systemBackground
         navigationItem.title = "Лента"
-        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        feedTableView.refreshControl = refreshControl
         
         view.addSubview(feedTableView)
         
@@ -48,6 +46,31 @@ final class FeedViewController: UIViewController {
             feedTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             feedTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+    
+    private func loadData() {
+        viewModel.getPostsFromCache { [unowned self] cachedPosts in
+            if cachedPosts > 0 {
+                feedTableView.reloadData()
+            }
+            viewModel.getPostsFromWeb { [unowned self] newPostsCount in
+                if newPostsCount > 0 {
+                    let indexPaths = (0..<newPostsCount).map { IndexPath(row: $0, section: 0) }
+                    feedTableView.insertRows(at: indexPaths, with: .automatic)
+                }
+            }
+        }
+    }
+    
+    @objc
+    private func handleRefresh() {
+        viewModel.getPostsFromWeb { [unowned self] newPostsCount in
+            if newPostsCount > 0 {
+                let indexPaths = (0..<newPostsCount).map { IndexPath(row: $0, section: 0) }
+                feedTableView.insertRows(at: indexPaths, with: .automatic)
+            }
+            feedTableView.refreshControl?.endRefreshing()
+        }
     }
 }
 

@@ -26,7 +26,7 @@ final class StorageManager {
         context = persistentContainer.viewContext
     }
     
-    func createPost(withId id: Int, userId: Int, title: String, body: String, completion: (Post)->Void) {
+    func createPost(withId id: Int, userId: Int, title: String, body: String, completion: (Post) -> Void) {
         let post = Post(context: context)
         post.id = Int64(id)
         post.userId = Int64(userId)
@@ -38,6 +38,10 @@ final class StorageManager {
     
     func fetchData(complition: (Result<[Post], NSError>) -> Void) {
         let fetchRequest = Post.fetchRequest()
+        
+        let sortDescriptor = NSSortDescriptor(key: "id", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
         do {
             let posts = try persistentContainer.viewContext.fetch(fetchRequest)
             complition(.success(posts))

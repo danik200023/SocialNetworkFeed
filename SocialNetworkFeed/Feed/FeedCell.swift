@@ -14,12 +14,14 @@ final class FeedCell: UITableViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 15
         
         return imageView
     }()
     
     private let usernameLabel: UILabel = {
         let label = UILabel()
+        
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 13, weight: .medium)
         label.numberOfLines = 1
