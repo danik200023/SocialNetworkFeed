@@ -27,4 +27,11 @@ final class NetworkManager {
                 completion(response.result)
             }
     }
+    
+    func loadImage(from url: URLConvertible, completion: @escaping (Result<Data?, AFError>) -> Void) {
+        AF.request(url)
+            .validate().response{ response in
+                completion(response.result)
+            }
+    }
 }

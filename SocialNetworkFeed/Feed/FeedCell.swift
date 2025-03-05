@@ -32,7 +32,7 @@ final class FeedCell: UITableViewCell {
         
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 2
-        label.font = .systemFont(ofSize: 17, weight: .medium)
+        label.font = .systemFont(ofSize: 20, weight: .medium)
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.6
         
@@ -44,14 +44,18 @@ final class FeedCell: UITableViewCell {
         
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 15, weight: .regular)
+        label.font = .systemFont(ofSize: 15)
         
         return label
     }()
     
     var viewModel: FeedCellViewModelProtocol! {
         didSet {
+            viewModel.loadImage { [weak self] data in
+                self?.avatarImageView.image = UIImage(data: data)
+            }
             titleLabel.text = viewModel.title
+            usernameLabel.text = viewModel.username
             descriptionLabel.text = viewModel.description
         }
     }
@@ -80,7 +84,7 @@ final class FeedCell: UITableViewCell {
             
             usernameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 6),
             usernameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -6),
-            usernameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 6),
+            usernameLabel.centerYAnchor.constraint(equalTo: avatarImageView.centerYAnchor),
             
             titleLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 6),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 6),
